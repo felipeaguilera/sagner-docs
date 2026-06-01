@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Declaración de insumos y prácticas sostenibles | Alejandro Sagner SpA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul:#36454F;--gris:#708090;--plata:#A9A9A9;--negro:#090E10;
+    --dorado:#B19461;--claro:#EBEBEB;--tinta:#23303a;--papel:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',sans-serif;background:var(--claro);color:var(--tinta);line-height:1.65;-webkit-font-smoothing:antialiased;padding:48px 32px;}
+  .doc{max-width:660px;margin:0 auto;background:var(--papel);box-shadow:0 20px 60px rgba(9,14,16,.12);overflow:hidden;}
+  .letterhead{background:var(--azul);color:#fff;padding:34px 56px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;position:relative;}
+  .letterhead::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--dorado) 0%,var(--dorado) 38%,transparent 38%);}
+  .mono{font-family:'Playfair Display',serif;font-weight:700;font-size:38px;letter-spacing:1px;line-height:1;border:1.5px solid rgba(255,255,255,.55);padding:10px 14px;}
+  .brand-name{text-align:right;}
+  .brand-name .l1{font-weight:300;letter-spacing:6px;font-size:12px;color:var(--plata);text-transform:uppercase;}
+  .brand-name .l2{font-family:'Playfair Display',serif;font-weight:600;font-size:24px;letter-spacing:2px;}
+  .body{padding:50px 56px 30px;}
+  .kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--dorado);font-weight:600;margin-bottom:10px;}
+  h1{font-family:'Playfair Display',serif;font-weight:700;font-size:34px;line-height:1.12;color:var(--azul);margin-bottom:10px;}
+  .docref{font-size:12px;color:var(--gris);border-bottom:1px solid #e3e3e3;padding-bottom:18px;margin-bottom:28px;}
+  p{margin-bottom:16px;font-size:15px;}
+  h2{font-family:'Inter',sans-serif;font-weight:600;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--azul);margin:30px 0 16px;display:flex;align-items:center;gap:10px;}
+  h2::before{content:"";width:22px;height:2px;background:var(--dorado);display:inline-block;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .card{border:1px solid #ececea;border-radius:6px;padding:20px;background:#fcfcfb;display:flex;flex-direction:column;gap:10px;}
+  .ico{width:42px;height:42px;border-radius:8px;background:var(--azul);display:flex;align-items:center;justify-content:center;}
+  .ico svg{width:22px;height:22px;stroke:var(--dorado);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+  .card h3{font-family:'Inter',sans-serif;font-weight:600;font-size:15px;color:var(--azul);}
+  .card p{font-size:13.5px;margin-bottom:0;color:var(--tinta);}
+  .card.wide{grid-column:1 / -1;background:var(--azul);color:#fff;}
+  .card.wide h3{color:#fff;font-family:'Playfair Display',serif;font-weight:600;font-size:18px;}
+  .card.wide p{color:#dfe5e8;font-size:14px;}
+  .card.wide .ico{background:rgba(255,255,255,.12);}
+  .note{background:#f6f6f4;border-left:3px solid var(--dorado);padding:16px 20px;font-size:13px;color:var(--gris);margin-top:26px;}
+  .note strong{color:var(--azul);}
+  footer{background:var(--claro);border-top:1px solid #ddd;padding:18px 56px;font-size:11px;color:var(--gris);line-height:1.55;}
+  footer .fr{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;}
+  footer strong{color:var(--azul);}
+    @media print{
+    body{background:#fff;padding:0;margin:0;}
+    
+    .letterhead,footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .point .num,.phase-num,.marker,.tag,.annex-note,.kicker{
+      -webkit-print-color-adjust:exact;print-color-adjust:exact;
+    }
+    .letterhead::after{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .point,.phase,.attr-item{break-inside:avoid;}
+    .signoff,.sign-block{break-inside:avoid;}
+    .dl-btn{display:none!important;}
+    @page{margin:12mm 16mm;size:letter;}
+  }.card{break-inside:avoid;}@page{margin:14mm;}}
+  h1{font-size:25px;}.grid{grid-template-columns:1fr;}}
+  .letterhead-logo{height:50px;width:auto;display:block;}
+  .dl-btn{
+    position:fixed;bottom:28px;right:28px;
+    background:var(--azul);color:#fff;border:none;
+    padding:12px 20px;font-family:'Inter',sans-serif;
+    font-size:13px;font-weight:600;letter-spacing:.3px;cursor:pointer;
+    display:flex;align-items:center;gap:8px;
+    box-shadow:0 4px 16px rgba(9,14,16,.25);z-index:100;transition:background .2s;
+  }
+  .dl-btn:hover{background:var(--tinta);}
+  @media(max-width:720px){
+    body{padding:20px 0;}
+    .doc{border-radius:0;}
+    .letterhead{padding:20px 24px;flex-direction:row;gap:12px;}
+    .letterhead-logo{height:38px;}
+    .body{padding:28px 24px 24px;}
+    h1{font-size:22px;}
+    .meta{flex-direction:column;gap:8px;}
+    .meta .place{text-align:left;}
+    .point,.phase,.attr-item{gap:14px;padding:16px 0;}
+    footer{padding:14px 24px;}
+    .dl-btn{bottom:16px;right:16px;padding:10px 14px;font-size:12px;}
+  }
+  @media(max-width:480px){
+    .letterhead{flex-direction:column;align-items:flex-start;}
+    .letterhead-logo{height:34px;}
+    .body{padding:20px 18px;}
+    h1{font-size:20px;}
+    footer{padding:14px 18px;}
+  }
+
+  /* ── overrides ── */
+  .doc{max-width:660px !important;margin:0 auto !important;}
+  body{padding:48px 32px;}
+  .letterhead-logo{height:50px !important;width:auto !important;
+    display:block !important;max-width:100% !important;}
+
+</style>
+</head>
+<body>
+<button class="dl-btn" onclick="window.print()">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+  Descargar PDF
+</button>
+<div class="doc">
+  <div class="letterhead">
+    <img src="../assets/logos/Alejandro-Sagner-Logo-Horizontal-FondosOscuros.svg" alt="Alejandro Sagner" class="letterhead-logo">
+  </div>
+
+  <div class="body">
+    <div class="kicker">Anexo técnico</div>
+    <h1>Declaración de insumos y prácticas sostenibles</h1>
+    <div class="docref">Alejandro Sagner SpA &nbsp;•&nbsp; 1 de junio de 2026 &nbsp;•&nbsp; Anexo a la respuesta ambiental</div>
+
+    <p>El presente anexo describe los atributos ambientales de los insumos y del modelo de trabajo de Alejandro Sagner SpA. La información refleja las prácticas vigentes y no incorpora estimaciones ni cifras que no puedan ser respaldadas.</p>
+
+    <div class="grid">
+
+      <div class="card wide">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg></div>
+        <h3>Economía circular por extensión de vida útil</h3>
+        <p>Nuestro modelo central, basado en ingeniería de precisión e ingeniería inversa, prolonga la vida útil de equipos y componentes mineros. Esto reduce la demanda de repuestos nuevos y el consumo de recursos asociado, constituyendo el principal aporte ambiental de nuestra actividad.</p>
+      </div>
+
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M7 19h10"/><path d="M12 3v4"/><path d="M5 8l3 3-3 3"/><path d="M19 8l-3 3 3 3"/><path d="M9 11h6"/></svg></div>
+        <h3>Materiales de alta reciclabilidad</h3>
+        <p>Los componentes se fabrican principalmente en aluminio, acero y cobre, materiales con elevadas tasas de reciclaje al final de su vida útil.</p>
+      </div>
+
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg></div>
+        <h3>Embalaje reciclable y reutilizable</h3>
+        <p>Solicitamos a nuestros proveedores el uso de cartón reciclable y pallets reutilizables cuando es posible, para reducir el residuo de embalaje en la entrega.</p>
+      </div>
+
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>Durabilidad como criterio de diseño</h3>
+        <p>Diseñamos para cumplir o superar las especificaciones originales, priorizando la durabilidad. Una mayor vida útil del componente implica menor reposición y menor impacto.</p>
+      </div>
+
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h10"/><circle cx="18" cy="17" r="2.5"/></svg></div>
+        <h3>Producción a través de red especializada</h3>
+        <p>La fabricación se ejecuta con talleres y proveedores especializados. Incorporaremos de forma progresiva criterios ambientales en su selección, fomentando la valorización de la merma metálica que se genera en sus procesos.</p>
+      </div>
+
+    </div>
+
+    <div class="note">
+      <strong>Nota.</strong> Esta declaración corresponde a prácticas y atributos verificables a la fecha. Los compromisos de mejora y los plazos asociados se detallan en el Programa de gestión ambiental adjunto.
+    </div>
+  </div>
+
+  <footer>
+    <div class="fr">
+      <div><strong>Alejandro Sagner SpA.</strong> 77.704.639-K<br>Av. Colón 3646-154A, Las Condes</div>
+      <div style="text-align:right;">+56 2 2453 3157 &nbsp;|&nbsp; contacto@alejandrosagner.com &nbsp;|&nbsp; www.alejandrosagner.com</div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

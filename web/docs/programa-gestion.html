@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programa de gestión ambiental | Alejandro Sagner SpA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul:#36454F;--gris:#708090;--plata:#A9A9A9;--negro:#090E10;
+    --dorado:#B19461;--claro:#EBEBEB;--tinta:#23303a;--papel:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',sans-serif;background:var(--claro);color:var(--tinta);line-height:1.65;-webkit-font-smoothing:antialiased;padding:48px 32px;}
+  .doc{max-width:660px;margin:0 auto;background:var(--papel);box-shadow:0 20px 60px rgba(9,14,16,.12);overflow:hidden;}
+  .letterhead{background:var(--azul);color:#fff;padding:34px 56px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;position:relative;}
+  .letterhead::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--dorado) 0%,var(--dorado) 38%,transparent 38%);}
+  .mono{font-family:'Playfair Display',serif;font-weight:700;font-size:38px;letter-spacing:1px;line-height:1;border:1.5px solid rgba(255,255,255,.55);padding:10px 14px;}
+  .brand-name{text-align:right;}
+  .brand-name .l1{font-weight:300;letter-spacing:6px;font-size:12px;color:var(--plata);text-transform:uppercase;}
+  .brand-name .l2{font-family:'Playfair Display',serif;font-weight:600;font-size:24px;letter-spacing:2px;}
+  .body{padding:50px 56px 30px;}
+  .kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--dorado);font-weight:600;margin-bottom:10px;}
+  h1{font-family:'Playfair Display',serif;font-weight:700;font-size:36px;line-height:1.1;color:var(--azul);margin-bottom:10px;}
+  .docref{font-size:12px;color:var(--gris);border-bottom:1px solid #e3e3e3;padding-bottom:18px;margin-bottom:28px;}
+  p{margin-bottom:16px;font-size:15px;}
+  h2{font-family:'Inter',sans-serif;font-weight:600;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--azul);margin:34px 0 18px;display:flex;align-items:center;gap:10px;}
+  h2::before{content:"";width:22px;height:2px;background:var(--dorado);display:inline-block;}
+
+  /* roadmap */
+  .road{position:relative;margin:10px 0 10px;padding-left:8px;}
+  .phase{position:relative;padding:0 0 30px 56px;}
+  .phase::before{content:"";position:absolute;left:18px;top:6px;bottom:-6px;width:2px;background:#e1e1de;}
+  .phase:last-child::before{display:none;}
+  .marker{position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;background:var(--azul);color:#fff;font-family:'Playfair Display',serif;font-weight:600;font-size:16px;display:flex;align-items:center;justify-content:center;z-index:2;}
+  .phase.f0 .marker{background:var(--gris);}
+  .phase.f3 .marker{background:var(--dorado);}
+  .pcard{background:#f8f8f6;border:1px solid #ececea;border-radius:6px;padding:18px 22px;}
+  .phead{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:10px;}
+  .phead h3{font-family:'Playfair Display',serif;font-weight:600;font-size:19px;color:var(--azul);}
+  .plazo{font-size:11px;font-weight:600;letter-spacing:.5px;color:#fff;background:var(--azul);padding:4px 12px;border-radius:20px;white-space:nowrap;}
+  .phase.f0 .plazo{background:var(--gris);}
+  .phase.f3 .plazo{background:var(--dorado);}
+  .acts{list-style:none;}
+  .acts li{position:relative;padding:6px 0 6px 22px;font-size:14px;border-top:1px solid #ececea;}
+  .acts li:first-child{border-top:none;}
+  .acts li::before{content:"";position:absolute;left:2px;top:13px;width:7px;height:7px;border-radius:2px;background:var(--dorado);}
+
+  /* indicadores */
+  .kpi-table{width:100%;border-collapse:collapse;margin:6px 0 4px;font-size:13.5px;}
+  .kpi-table th{background:var(--azul);color:#fff;text-align:left;padding:11px 14px;font-weight:600;font-size:12px;letter-spacing:.5px;}
+  .kpi-table td{padding:11px 14px;border-bottom:1px solid #ececec;vertical-align:top;}
+  .kpi-table tr:nth-child(even) td{background:#f8f8f6;}
+  .kpi-table td:first-child{font-weight:600;color:var(--azul);width:42%;}
+  .note{background:#f6f6f4;border-left:3px solid var(--dorado);padding:16px 20px;font-size:13px;color:var(--gris);margin-top:24px;}
+  .note strong{color:var(--azul);}
+  footer{background:var(--claro);border-top:1px solid #ddd;padding:18px 56px;font-size:11px;color:var(--gris);line-height:1.55;}
+  footer .fr{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;}
+  footer strong{color:var(--azul);}
+    @media print{
+    body{background:#fff;padding:0;margin:0;}
+    
+    .letterhead,footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .point .num,.phase-num,.marker,.tag,.annex-note,.kicker{
+      -webkit-print-color-adjust:exact;print-color-adjust:exact;
+    }
+    .letterhead::after{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .point,.phase,.attr-item{break-inside:avoid;}
+    .signoff,.sign-block{break-inside:avoid;}
+    .dl-btn{display:none!important;}
+    @page{margin:12mm 16mm;size:letter;}
+  }.phase{break-inside:avoid;}@page{margin:14mm;}}
+  h1{font-size:27px;}}
+  .letterhead-logo{height:50px;width:auto;display:block;}
+  .dl-btn{
+    position:fixed;bottom:28px;right:28px;
+    background:var(--azul);color:#fff;border:none;
+    padding:12px 20px;font-family:'Inter',sans-serif;
+    font-size:13px;font-weight:600;letter-spacing:.3px;cursor:pointer;
+    display:flex;align-items:center;gap:8px;
+    box-shadow:0 4px 16px rgba(9,14,16,.25);z-index:100;transition:background .2s;
+  }
+  .dl-btn:hover{background:var(--tinta);}
+  @media(max-width:720px){
+    body{padding:20px 0;}
+    .doc{border-radius:0;}
+    .letterhead{padding:20px 24px;flex-direction:row;gap:12px;}
+    .letterhead-logo{height:38px;}
+    .body{padding:28px 24px 24px;}
+    h1{font-size:22px;}
+    .meta{flex-direction:column;gap:8px;}
+    .meta .place{text-align:left;}
+    .point,.phase,.attr-item{gap:14px;padding:16px 0;}
+    footer{padding:14px 24px;}
+    .dl-btn{bottom:16px;right:16px;padding:10px 14px;font-size:12px;}
+  }
+  @media(max-width:480px){
+    .letterhead{flex-direction:column;align-items:flex-start;}
+    .letterhead-logo{height:34px;}
+    .body{padding:20px 18px;}
+    h1{font-size:20px;}
+    footer{padding:14px 18px;}
+  }
+
+  /* ── overrides ── */
+  .doc{max-width:660px !important;margin:0 auto !important;}
+  body{padding:48px 32px;}
+  .letterhead-logo{height:50px !important;width:auto !important;
+    display:block !important;max-width:100% !important;}
+
+</style>
+</head>
+<body>
+<button class="dl-btn" onclick="window.print()">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+  Descargar PDF
+</button>
+<div class="doc">
+  <div class="letterhead">
+    <img src="../assets/logos/Alejandro-Sagner-Logo-Horizontal-FondosOscuros.svg" alt="Alejandro Sagner" class="letterhead-logo">
+  </div>
+
+  <div class="body">
+    <div class="kicker">Plan de implementación</div>
+    <h1>Programa de gestión ambiental</h1>
+    <div class="docref">Alejandro Sagner SpA &nbsp;•&nbsp; Horizonte 2026 a 2027 &nbsp;•&nbsp; Versión 1.0</div>
+
+    <p>Este programa traduce los compromisos de nuestra Política Ambiental en acciones concretas con plazos definidos. Está diseñado para una empresa de ingeniería con producción subcontratada, por lo que se concentra en la gestión de la operación de oficina, la cuantificación de la huella organizacional y la incorporación progresiva de criterios ambientales en la red de proveedores.</p>
+
+    <h2>Hoja de ruta por fases</h2>
+    <div class="road">
+
+      <div class="phase f0">
+        <div class="marker">0</div>
+        <div class="pcard">
+          <div class="phead"><h3>Bases</h3><span class="plazo">Inmediato</span></div>
+          <ul class="acts">
+            <li>Aprobación y firma de la Política Ambiental por la dirección.</li>
+            <li>Designación del responsable interno de gestión ambiental.</li>
+            <li>Inventario simple de aspectos ambientales: consumos de oficina, residuos y mapa de proveedores recurrentes.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="phase f1">
+        <div class="marker">1</div>
+        <div class="pcard">
+          <div class="phead"><h3>Activación</h3><span class="plazo">0 a 3 meses</span></div>
+          <ul class="acts">
+            <li>Registro en el Programa HuellaChile a través de la Ventanilla Única del Ministerio del Medio Ambiente.</li>
+            <li>Prácticas de oficina: segregación de residuos, reciclaje de papel, cartón y metales, y medidas de eficiencia energética.</li>
+            <li>Cuestionario ambiental simple para proveedores recurrentes, proporcional a su tamaño.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="phase f2">
+        <div class="marker">2</div>
+        <div class="pcard">
+          <div class="phead"><h3>Medición</h3><span class="plazo">3 a 9 meses</span></div>
+          <ul class="acts">
+            <li>Cuantificación de la huella de carbono organizacional con la herramienta gratuita de HuellaChile, considerando electricidad y logística.</li>
+            <li>Definición de metas de reducción a partir de la línea base.</li>
+            <li>Preferencia documentada por materiales reciclables en desarrollos nuevos.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="phase f3">
+        <div class="marker">3</div>
+        <div class="pcard">
+          <div class="phead"><h3>Consolidación</h3><span class="plazo">9 a 18 meses</span></div>
+          <ul class="acts">
+            <li>Postulación al Sello de Cuantificación del Programa HuellaChile.</li>
+            <li>Formalización de una política de compras con criterios ambientales graduales.</li>
+            <li>Evaluación de un Acuerdo de Producción Limpia del sector metalmecánico, según factibilidad.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <h2>Indicadores de seguimiento</h2>
+    <table class="kpi-table">
+      <thead><tr><th>Compromiso</th><th>Indicador de avance</th></tr></thead>
+      <tbody>
+        <tr><td>Política y responsable</td><td>Política firmada y responsable designado</td></tr>
+        <tr><td>Registro HuellaChile</td><td>Inscripción activa en la plataforma</td></tr>
+        <tr><td>Gestión de residuos</td><td>Puntos de segregación operativos en oficina</td></tr>
+        <tr><td>Huella de carbono</td><td>Línea base cuantificada y meta de reducción fijada</td></tr>
+        <tr><td>Cadena de proveedores</td><td>Porcentaje de proveedores recurrentes con cuestionario respondido</td></tr>
+        <tr><td>Sello de cuantificación</td><td>Postulación ingresada y verificación en curso</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <strong>Sobre el Programa HuellaChile.</strong> Es una iniciativa del Ministerio del Medio Ambiente para el cálculo, reporte y gestión de gases de efecto invernadero. El registro y la herramienta de cálculo son gratuitos. La obtención del sello de reconocimiento requiere una verificación por un tercero independiente, costo que asume la organización, por lo que se considera meta de la fase de consolidación.
+    </div>
+  </div>
+
+  <footer>
+    <div class="fr">
+      <div><strong>Alejandro Sagner SpA.</strong> 77.704.639-K<br>Av. Colón 3646-154A, Las Condes</div>
+      <div style="text-align:right;">+56 2 2453 3157<br>contacto@alejandrosagner.com &nbsp;|&nbsp; www.alejandrosagner.com</div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

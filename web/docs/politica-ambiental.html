@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política Ambiental | Alejandro Sagner SpA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul:#36454F;--gris:#708090;--plata:#A9A9A9;--negro:#090E10;
+    --dorado:#B19461;--claro:#EBEBEB;--tinta:#23303a;--papel:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',sans-serif;background:var(--claro);color:var(--tinta);line-height:1.65;-webkit-font-smoothing:antialiased;padding:48px 32px;}
+  .doc{max-width:660px;margin:0 auto;background:var(--papel);box-shadow:0 20px 60px rgba(9,14,16,.12);position:relative;overflow:hidden;}
+  .letterhead{background:var(--azul);color:#fff;padding:34px 56px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;position:relative;}
+  .letterhead::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--dorado) 0%,var(--dorado) 38%,transparent 38%);}
+  .mono{font-family:'Playfair Display',serif;font-weight:700;font-size:38px;letter-spacing:1px;line-height:1;border:1.5px solid rgba(255,255,255,.55);padding:10px 14px;}
+  .brand-name{text-align:right;}
+  .brand-name .l1{font-weight:300;letter-spacing:6px;font-size:12px;color:var(--plata);text-transform:uppercase;}
+  .brand-name .l2{font-family:'Playfair Display',serif;font-weight:600;font-size:24px;letter-spacing:2px;}
+  .body{padding:50px 56px 30px;position:relative;}
+  .watermark{position:absolute;right:30px;top:120px;font-family:'Playfair Display',serif;font-size:300px;color:#f1f1ee;z-index:0;line-height:1;user-select:none;pointer-events:none;}
+  .body > *{position:relative;z-index:1;}
+  .kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--dorado);font-weight:600;margin-bottom:10px;}
+  h1{font-family:'Playfair Display',serif;font-weight:700;font-size:38px;line-height:1.1;color:var(--azul);margin-bottom:10px;}
+  .docref{font-size:12px;color:var(--gris);letter-spacing:.5px;border-bottom:1px solid #e3e3e3;padding-bottom:18px;margin-bottom:30px;}
+  p{margin-bottom:16px;font-size:15px;}
+  h2{font-family:'Inter',sans-serif;font-weight:600;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--azul);margin:30px 0 12px;display:flex;align-items:center;gap:10px;}
+  h2::before{content:"";width:22px;height:2px;background:var(--dorado);display:inline-block;}
+  .commit{list-style:none;margin:6px 0 6px;}
+  .commit li{position:relative;padding:13px 0 13px 40px;border-bottom:1px solid #ededed;font-size:14.5px;}
+  .commit li::before{content:"";position:absolute;left:8px;top:18px;width:9px;height:9px;background:var(--azul);border-radius:50%;box-shadow:0 0 0 4px #e9edef;}
+  .commit li strong{color:var(--azul);font-weight:600;}
+  .scope-box{background:#f6f6f4;border-left:3px solid var(--dorado);padding:18px 22px;font-size:14px;margin:6px 0 4px;}
+  .signrow{display:flex;justify-content:space-between;gap:40px;margin-top:50px;flex-wrap:wrap;}
+  .sign-line{flex:1;min-width:220px;border-top:1px solid var(--azul);padding-top:8px;font-size:13px;}
+  .sign-line strong{color:var(--azul);}
+  .sign-line span{color:var(--gris);}
+  footer{background:var(--claro);border-top:1px solid #ddd;padding:18px 56px;font-size:11px;color:var(--gris);line-height:1.55;}
+  footer .fr{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;}
+  footer strong{color:var(--azul);}
+    @media print{
+    body{background:#fff;padding:0;margin:0;}
+    
+    .letterhead,footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .point .num,.phase-num,.marker,.tag,.annex-note,.kicker{
+      -webkit-print-color-adjust:exact;print-color-adjust:exact;
+    }
+    .letterhead::after{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .point,.phase,.attr-item{break-inside:avoid;}
+    .signoff,.sign-block{break-inside:avoid;}
+    .dl-btn{display:none!important;}
+    @page{margin:12mm 16mm;size:letter;}
+  }.commit li{break-inside:avoid;}@page{margin:14mm;}}
+  h1{font-size:28px;}.watermark{display:none;}}
+  .letterhead-logo{height:50px;width:auto;display:block;}
+  .dl-btn{
+    position:fixed;bottom:28px;right:28px;
+    background:var(--azul);color:#fff;border:none;
+    padding:12px 20px;font-family:'Inter',sans-serif;
+    font-size:13px;font-weight:600;letter-spacing:.3px;cursor:pointer;
+    display:flex;align-items:center;gap:8px;
+    box-shadow:0 4px 16px rgba(9,14,16,.25);z-index:100;transition:background .2s;
+  }
+  .dl-btn:hover{background:var(--tinta);}
+  @media(max-width:720px){
+    body{padding:20px 0;}
+    .doc{border-radius:0;}
+    .letterhead{padding:20px 24px;flex-direction:row;gap:12px;}
+    .letterhead-logo{height:38px;}
+    .body{padding:28px 24px 24px;}
+    h1{font-size:22px;}
+    .meta{flex-direction:column;gap:8px;}
+    .meta .place{text-align:left;}
+    .point,.phase,.attr-item{gap:14px;padding:16px 0;}
+    footer{padding:14px 24px;}
+    .dl-btn{bottom:16px;right:16px;padding:10px 14px;font-size:12px;}
+  }
+  @media(max-width:480px){
+    .letterhead{flex-direction:column;align-items:flex-start;}
+    .letterhead-logo{height:34px;}
+    .body{padding:20px 18px;}
+    h1{font-size:20px;}
+    footer{padding:14px 18px;}
+  }
+
+  /* ── overrides ── */
+  .doc{max-width:660px !important;margin:0 auto !important;}
+  body{padding:48px 32px;}
+  .letterhead-logo{height:50px !important;width:auto !important;
+    display:block !important;max-width:100% !important;}
+
+</style>
+</head>
+<body>
+<button class="dl-btn" onclick="window.print()">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+  Descargar PDF
+</button>
+<div class="doc">
+  <div class="letterhead">
+    <img src="../assets/logos/Alejandro-Sagner-Logo-Horizontal-FondosOscuros.svg" alt="Alejandro Sagner" class="letterhead-logo">
+  </div>
+
+  <div class="body">
+    <div class="watermark">AS</div>
+    <div class="kicker">Documento corporativo</div>
+    <h1>Política Ambiental</h1>
+    <div class="docref">Alejandro Sagner SpA &nbsp;•&nbsp; Versión 1.0 &nbsp;•&nbsp; 1 de junio de 2026 &nbsp;•&nbsp; Revisión anual</div>
+
+    <p>Alejandro Sagner SpA es una empresa de ingeniería de precisión dedicada al desarrollo y la fabricación de componentes críticos para la industria minera. Reconocemos que la confiabilidad, la durabilidad y la vida útil que entregamos a nuestros clientes son, además de un compromiso técnico, una contribución concreta al uso responsable de los recursos. Sobre esa base asumimos la presente Política Ambiental, que formaliza prácticas ambientales que la empresa ya aplicaba en su operación.</p>
+
+    <h2>Propósito</h2>
+    <p>Establecer los principios y compromisos que guían la gestión ambiental de la empresa, orientados a prevenir la contaminación, cumplir la legislación aplicable y mejorar de forma continua nuestro desempeño.</p>
+
+    <h2>Alcance</h2>
+    <div class="scope-box">
+      Esta política aplica a las operaciones directas de la empresa, que corresponden a actividades de ingeniería, diseño y gestión técnica realizadas en sus oficinas, y a la influencia que ejercemos sobre nuestra red de talleres y proveedores que ejecutan la fabricación. No abarca procesos productivos que la empresa no opera directamente, cuya gestión ambiental es responsabilidad de cada proveedor conforme a la normativa que le corresponde.
+    </div>
+
+    <h2>Nuestros compromisos</h2>
+    <ul class="commit">
+      <li><strong>Cumplimiento legal.</strong> Cumplir la legislación ambiental chilena aplicable a nuestras actividades y mantenernos atentos a su evolución.</li>
+      <li><strong>Prevención de la contaminación.</strong> Identificar y controlar los aspectos ambientales de nuestra operación para reducir su impacto.</li>
+      <li><strong>Gestión de residuos.</strong> Segregar y derivar a reciclaje los residuos generados en oficina, con prioridad en papel, cartón y metales.</li>
+      <li><strong>Eficiencia de recursos.</strong> Promover el uso eficiente de energía y materiales en nuestras instalaciones.</li>
+      <li><strong>Economía circular.</strong> Privilegiar materiales reciclables y soluciones de ingeniería que extiendan la vida útil de los componentes, reduciendo la demanda de recursos nuevos.</li>
+      <li><strong>Cadena de proveedores.</strong> Incorporar de manera progresiva y proporcional criterios ambientales en la selección y evaluación de proveedores, fomentando buenas prácticas sin exigir condiciones inviables para talleres de menor tamaño.</li>
+      <li><strong>Gestión del carbono.</strong> Avanzar hacia la cuantificación y gestión de nuestra huella de carbono organizacional.</li>
+      <li><strong>Mejora continua.</strong> Revisar periódicamente esta política y sus resultados, y fijar objetivos de mejora.</li>
+    </ul>
+
+    <h2>Responsabilidad</h2>
+    <p>La dirección de la empresa es responsable de aprobar, difundir y revisar esta política, y designa un responsable interno de gestión ambiental encargado de su implementación y seguimiento. Esta política se comunica a todo el personal y está disponible para clientes y partes interesadas que lo soliciten.</p>
+
+    <div class="signrow">
+      <div class="sign-line"><strong>Alejandro Sagner Bongcam<br><small>RUT 3.468.239-9 &nbsp;·&nbsp; Gerente General</small></strong><br><span>Dirección, Alejandro Sagner SpA</span></div>
+      <div class="sign-line"><strong>Fecha</strong><br><span>Santiago, 1 de junio de 2026</span></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="fr">
+      <div><strong>Alejandro Sagner SpA.</strong> 77.704.639-K<br>Av. Colón 3646-154A, Las Condes</div>
+      <div style="text-align:right;">+56 2 2453 3157<br>contacto@alejandrosagner.com &nbsp;|&nbsp; www.alejandrosagner.com</div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
