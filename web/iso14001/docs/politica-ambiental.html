@@ -81,12 +81,6 @@
     /* Page break rules */
     .point,.phase,.commit,.attr-item{break-inside:avoid;}
     .signoff,.sign-block,.metrics-table{break-inside:avoid;}
-  
-    /* Swap logo to Standard version for print */
-    .letterhead-logo{
-      content:url("../../assets/logos/Alejandro-Sagner-Logo-Horizontal-Standard.svg") !important;
-      height:38px !important;
-    }
   }.commit li{break-inside:avoid;}@page{margin:14mm;}}
   h1{font-size:28px;}.watermark{display:none;}}
   .letterhead-logo{height:50px;width:auto;display:block;}
@@ -126,6 +120,14 @@
   .letterhead-logo{height:50px !important;width:auto !important;
     display:block !important;max-width:100% !important;}
 
+
+  /* Screen: show FondosOscuros, hide Standard */
+  .letterhead-logo-print{display:none;}
+  /* Print: hide FondosOscuros, show Standard */
+  @media print{
+    .letterhead-logo{display:none !important;}
+    .letterhead-logo-print{display:block !important;height:38px !important;width:auto !important;}
+  }
 </style>
 </head>
 <body>
