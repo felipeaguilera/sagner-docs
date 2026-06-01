@@ -199,18 +199,45 @@
   footer .fr{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;}
   footer strong{color:var(--azul);}
   footer .disc{font-style:italic;color:var(--plata);margin-top:6px;display:block;font-size:10px;}
-    @media print{
-    body{background:#fff;padding:0;margin:0;}
-    
-    .letterhead,footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-    .point .num,.phase-num,.marker,.tag,.annex-note,.kicker{
-      -webkit-print-color-adjust:exact;print-color-adjust:exact;
+      @media print{
+    /* Page setup */
+    @page{margin:18mm 20mm;size:letter;}
+    body{background:#fff !important;padding:0 !important;margin:0 !important;}
+    .doc{box-shadow:none !important;max-width:100% !important;}
+    .dl-btn{display:none !important;}
+
+    /* Letterhead: swap dark bg to white, keep logo, add gold border */
+    .letterhead{
+      background:#fff !important;
+      color:var(--tinta) !important;
+      border-bottom:3px solid var(--dorado) !important;
+      padding:18px 32px !important;
     }
-    .letterhead::after{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-    .point,.phase,.attr-item{break-inside:avoid;}
-    .signoff,.sign-block{break-inside:avoid;}
-    .dl-btn{display:none!important;}
-    @page{margin:12mm 16mm;size:letter;}
+    .letterhead::after{display:none !important;}
+    .letterhead-logo{
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+      height:40px !important;
+    }
+
+    /* Footer: light version */
+    footer{
+      background:#f7f7f5 !important;
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+    }
+
+    /* Preserve brand colors in content */
+    .kicker,.tag,.annex-note,.note-block,.commit-dot,
+    .doc-type,.phase-num,.marker,.attr-icon,
+    .metrics-table th,.sign-line{
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+    }
+
+    /* Page break rules */
+    .point,.phase,.commit,.attr-item{break-inside:avoid;}
+    .signoff,.sign-block,.metrics-table{break-inside:avoid;}
   }
     
     .point{break-inside:avoid;}
