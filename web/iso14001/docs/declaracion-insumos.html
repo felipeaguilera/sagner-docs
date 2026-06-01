@@ -82,6 +82,13 @@
     /* Page break rules */
     .point,.phase,.commit,.attr-item{break-inside:avoid;}
     .signoff,.sign-block,.metrics-table{break-inside:avoid;}
+  
+    /* declaracion-insumos: preserve card.wide and ico colors */
+    .card.wide,.ico,h2::before,.card{
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+    }
+    .card.wide{break-inside:avoid;}
   }.card{break-inside:avoid;}@page{margin:14mm;}}
   h1{font-size:25px;}.grid{grid-template-columns:1fr;}}
   .letterhead-logo{height:50px;width:auto;display:block;}
